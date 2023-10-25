@@ -34,4 +34,16 @@ public class OrderDetailService {
     public long getOrderDetailId(){
         return orderDetailRepository.getOrderDetailId();
     }
+
+    public List<Object[]> statisticOrderDetailOfMonthAndYear() {
+        return orderDetailRepository.statisticOrderDetailOfMonthAndYear();
+    }
+
+    public List<Object[]> statisticOrderDetailOfMonthAndYearByMonth(int month) {
+        return orderDetailRepository.statisticOrderDetailOfMonthAndYearByMonth(month);
+    }
+
+    public double getTotalPricesOfYear() {
+        return orderDetailRepository.getTotalPricesOfYear();
+    }
 }

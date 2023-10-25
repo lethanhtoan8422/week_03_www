@@ -35,4 +35,9 @@ public class ProductService {
     public List<InformationProduct> getInfoProduct(){
         return productRepository.getInfoProduct();
     }
+
+    public List<Object[]> getAllNameOfProductOrdered(){
+        return productRepository.getAllNameOfProductOrdered();
+    }
+
 }

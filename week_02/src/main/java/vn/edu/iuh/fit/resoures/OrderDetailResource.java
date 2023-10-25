@@ -79,4 +79,28 @@ public class OrderDetailResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+
+    @GET
+    @Path("/statisticOrderDetailOfMonthAndYear")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response statisticOrderDetailOfMonthAndYear() {
+        List<Object[]> list = orderDetailService.statisticOrderDetailOfMonthAndYear();
+        return Response.status(Response.Status.OK).entity(list).build();
+    }
+
+    @GET
+    @Path("/statisticOrderDetailOfMonthAndYearByMonth/{month}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response statisticOrderDetailOfMonthAndYearByMonth(@PathParam("month") int month) {
+        List<Object[]> list = orderDetailService.statisticOrderDetailOfMonthAndYearByMonth(month);
+        return Response.status(Response.Status.OK).entity(list).build();
+    }
+
+    @GET
+    @Path("/getTotalPricesOfYear")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTotalPricesOfYear() {
+        double totalPrice = orderDetailService.getTotalPricesOfYear();
+        return Response.status(Response.Status.OK).entity(totalPrice).build();
+    }
 }

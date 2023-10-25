@@ -8,7 +8,6 @@ import vn.edu.iuh.fit.db.ConnectionDB;
 import vn.edu.iuh.fit.entities.InformationProduct;
 import vn.edu.iuh.fit.models.Product;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,10 +116,12 @@ public class ProductRepository {
     public List<InformationProduct> getInfoProduct() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            String queryString = "SELECT p.product_id, p.name, pm.path, pr.price " +
-                    "FROM product AS p " +
-                    "INNER JOIN product_image AS pm ON p.product_id = pm.product_id " +
-                    "INNER JOIN product_price AS pr ON p.product_id = pr.product_id";
+            String queryString = "SELECT p.product_id, p.name, pm.path, pr.price FROM product AS p \n" +
+                    "INNER JOIN product_image AS pm ON p.product_id = pm.product_id \n" +
+                    "INNER JOIN (\n" +
+                    "\tSELECT price_id, note, MAX(price) AS price, MAX(price_date_time) AS price_date_time, product_id FROM product_price GROUP BY product_id\n" +
+                    ")AS pr ON p.product_id = pr.product_id\n" +
+                    "GROUP BY p.name, YEAR(o.order_date), MONTH(o.order_date)";
 
             Query query = entityManager.createNativeQuery(queryString);
             List<Object[]> results = query.getResultList();
@@ -137,6 +138,20 @@ public class ProductRepository {
             }
 
             return informationProducts;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public List<Object[]> getAllNameOfProductOrdered() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            String queryString = "SELECT pr.name FROM order_detail AS od INNER JOIN product AS pr ON od.product_id = pr.product_id GROUP BY pr.name ORDER BY pr.name";
+
+            Query query = entityManager.createNativeQuery(queryString);
+            List<Object[]> results = query.getResultList();
+
+            return results;
         } finally {
             entityManager.close();
         }

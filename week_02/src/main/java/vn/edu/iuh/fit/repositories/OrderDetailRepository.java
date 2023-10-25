@@ -6,6 +6,8 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import vn.edu.iuh.fit.db.ConnectionDB;
 import vn.edu.iuh.fit.models.OrderDetail;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailRepository {
@@ -126,5 +128,62 @@ public class OrderDetailRepository {
         }
 
         return orderDetailId;
+    }
+
+    public List<Object[]> statisticOrderDetailOfMonthAndYear() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            String queryString = "SELECT od.order_detail_id, pr.name, SUM(od.price) AS price, SUM(od.quantity) AS quantity, o.order_date\n" +
+                    "FROM order_detail AS od \n" +
+                    "INNER JOIN orders AS o ON o.order_id = od.order_id\n" +
+                    "INNER JOIN product AS pr ON pr.product_id = od.product_id\n" +
+                    "WHERE YEAR(o.order_date) = YEAR(CURRENT_DATE()) \n" +
+                    "GROUP BY pr.name, MONTH(o.order_date), YEAR(o.order_date)\n" +
+                    "ORDER BY pr.name, YEAR(o.order_date), MONTH(o.order_date)";
+
+            Query query = entityManager.createNativeQuery(queryString);
+            List<Object[]> results = query.getResultList();
+            return results;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public List<Object[]> statisticOrderDetailOfMonthAndYearByMonth(int month) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            String queryString = "SELECT od.order_detail_id, pr.name, SUM(od.price) AS price, SUM(od.quantity) AS quantity, o.order_date\n" +
+                    "FROM order_detail AS od \n" +
+                    "INNER JOIN orders AS o ON o.order_id = od.order_id\n" +
+                    "INNER JOIN product AS pr ON pr.product_id = od.product_id\n" +
+                    "WHERE YEAR(o.order_date) = YEAR(CURRENT_DATE()) AND MONTH(o.order_date) = ?\n" +
+                    "GROUP BY pr.name, MONTH(o.order_date), YEAR(o.order_date)\n" +
+                    "ORDER BY pr.name, YEAR(o.order_date), MONTH(o.order_date)";
+
+            Query query = entityManager.createNativeQuery(queryString);
+            query.setParameter(1, month);
+            List<Object[]> results = query.getResultList();
+            return results;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public double getTotalPricesOfYear() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            String queryString = "SELECT SUM(od.price) AS price\n" +
+                    "FROM order_detail AS od \n" +
+                    "INNER JOIN orders AS o ON o.order_id = od.order_id\n" +
+                    "INNER JOIN product AS pr ON pr.product_id = od.product_id\n" +
+                    "WHERE YEAR(o.order_date) = YEAR(CURRENT_DATE()) \n" +
+                    "GROUP BY YEAR(o.order_date)";
+
+            Query query = entityManager.createNativeQuery(queryString);
+            Object results = query.getSingleResult();
+            return (Double) results;
+        } finally {
+            entityManager.close();
+        }
     }
 }

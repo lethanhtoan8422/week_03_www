@@ -1,0 +1,39 @@
+.home-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    .statistic-orders{
+        width: 100%;
+        height: 45%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .statistic-orders-by-year{
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+            box-shadow: 8px 1px 12px 0px white;
+        }
+
+        .statistic-orders-by-month{
+            width: 40%;
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 0;
+            box-shadow: 0px 1px 12px 0px white;
+        }
+    }
+}

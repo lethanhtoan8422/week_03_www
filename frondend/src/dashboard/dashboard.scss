@@ -1,13 +1,15 @@
 .dashboard{
+    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    overflow: hidden;
+    // overflow: hidden;
 
     .nav-bar-dashboard{
+        position: fixed;
         width: 18%;
         height: 100%;
         display: flex;
@@ -56,6 +58,9 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        margin-left: 18%;
+        // overflow-y: scroll;
+        // overflow-x: hidden;
     }
 }
 

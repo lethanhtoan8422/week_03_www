@@ -77,4 +77,13 @@ public class ProductResource {
         List<InformationProduct> infoProduct = productService.getInfoProduct();
         return Response.status(Response.Status.OK).entity(infoProduct).build();
     }
+
+    @GET
+    @Path("/getAllNameOfProductOrdered")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllNameOfProductOrdered() {
+        List<Object[]> objects = productService.getAllNameOfProductOrdered();
+        return Response.status(Response.Status.OK).entity(objects).build();
+    }
+
 }
