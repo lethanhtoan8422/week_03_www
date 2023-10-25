@@ -18,3 +18,14 @@
 9.chọn đơn hàng đã đặt và hiển thị các sản phẩm đã được đặt hàng : \
 ![Ảnh9](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/e949b1be-7093-4aaf-ac6e-69c801f5f278) \
 ![Ảnh10](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/05b9bc51-5708-4b75-86ef-b18d8b1ef7a1) \
+
+# Admin :
+1.Đăng nhập : \
+![Ảnh11](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/eeed316b-a503-4f38-9f43-54a85bcce322) \
+2.Đăng nhập thành công vào trang admin, hiển thị doanh thu của mỗi sản phẩm theo tháng và doanh thu của năm : \
+![Ảnh12](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/72c2dcee-1c16-4198-ba33-9896a31924b6) \
+![Ảnh13](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/072028be-4286-4499-bfbe-8e46d96c51d7) \
+3/Click vào sản phẩm trong tháng -> thống kê doanh thu của tháng đó : \
+![Ảnh14](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/91bffbe3-1669-4adf-b029-599160329002) \
+![Ảnh15](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/251dfaa6-894b-4114-86e4-9a16604b6df5) \
+![Ảnh16](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/d38f3544-02eb-4296-bfff-d4e250812580) \
