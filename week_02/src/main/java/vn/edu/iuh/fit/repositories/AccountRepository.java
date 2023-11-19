@@ -10,6 +10,7 @@ import vn.edu.iuh.fit.models.Account;
 import vn.edu.iuh.fit.models.Order;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AccountRepository {
     private final EntityManagerFactory entityManagerFactory;
@@ -163,7 +164,7 @@ public class AccountRepository {
         return account;
     }
 
-    public List<Account> getAccountByEmail(String email) {
+    public List<Account> getAccountsByEmail(String email) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<Account> accounts = null;
         try {

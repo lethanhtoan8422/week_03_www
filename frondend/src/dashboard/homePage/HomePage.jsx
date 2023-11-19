@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import { useEffect, useRef, useState } from "react";
 import { Line, Pie, getElementAtEvent } from "react-chartjs-2";
+import Statistic from "../statistic/Statistic";
 // import faker from 'faker';
 
 ChartJS.register(
@@ -270,6 +271,7 @@ const HomePage = () => {
           <Pie data={dataPie} />
         </div>
       </div>
+      <Statistic/>
     </div>
   );
 };

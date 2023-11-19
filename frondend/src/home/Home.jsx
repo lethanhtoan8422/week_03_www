@@ -16,7 +16,7 @@ const Home = () => {
         let getApiProducts = async() => {
             let datas = await axios.get("http://localhost:8080/api/products/getInfoProduct");
             setProducts(datas.data)
-            setCustomer(location.state)
+            setCustomer(location.state.customer)
         }
         getApiProducts()
     }, [JSON.stringify(products)])
@@ -44,7 +44,7 @@ const Home = () => {
             <i className="fa-solid fa-cart-shopping icon-cart" onClick={handleClickCart}>
                 <span className="quantity-product-chosen">{productsChosen.length}</span>
             </i>
-            <i className="fa-solid fa-user icon-user" onClick={() => navigate("/user", {state : customer})}></i>
+            <i className="fa-solid fa-user icon-user" onClick={() => navigate("/user", {state : {customer : customer}})}></i>
         </div>
         <div className='content-products'>
             {

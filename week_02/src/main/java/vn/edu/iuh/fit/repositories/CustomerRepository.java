@@ -169,7 +169,7 @@ public class CustomerRepository {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         List<Object[]> objects = null;
         try {
-            Query query = entityManager.createNativeQuery("SELECT p.name, prm.path, od.price, od.quantity, o.order_date FROM customer AS c INNER JOIN orders AS o ON c.cust_id = o.cust_id INNER JOIN order_detail AS od ON o.order_id = od.order_id INNER JOIN product AS p ON od.product_id = p.product_id INNER JOIN product_image AS prm ON p.product_id = prm.product_id WHERE c.cust_id = ?");
+            Query query = entityManager.createNativeQuery("SELECT p.name, prm.path, od.price, od.quantity, o.order_date FROM customer AS c INNER JOIN orders AS o ON c.cust_id = o.cust_id INNER JOIN order_detail AS od ON o.order_id = od.order_id INNER JOIN product AS p ON od.product_id = p.product_id INNER JOIN product_image AS prm ON p.product_id = prm.product_id WHERE c.cust_id = ? ORDER BY o.order_date DESC");
             query.setParameter(1, id);
             objects = query.getResultList();
         } catch (Exception e) {

@@ -9,6 +9,7 @@ import vn.edu.iuh.fit.models.Order;
 import vn.edu.iuh.fit.services.AccountService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Path("/accounts")
 public class AccountResource {
@@ -103,8 +104,8 @@ public class AccountResource {
     @GET
     @Path("/account-by-email/{email}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAccountByEmail(@PathParam("email") String email) {
-        List<Account> accounts = accountService.getAccountByEmail(email);
+    public Response getAccountsByEmail(@PathParam("email") String email) {
+        List<Account> accounts = accountService.getAccountsByEmail(email);
         return Response.ok(accounts).build();
     }
 

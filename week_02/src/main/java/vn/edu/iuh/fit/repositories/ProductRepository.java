@@ -118,10 +118,9 @@ public class ProductRepository {
         try {
             String queryString = "SELECT p.product_id, p.name, pm.path, pr.price FROM product AS p \n" +
                     "INNER JOIN product_image AS pm ON p.product_id = pm.product_id \n" +
-                    "INNER JOIN (\n" +
-                    "\tSELECT price_id, note, MAX(price) AS price, MAX(price_date_time) AS price_date_time, product_id FROM product_price GROUP BY product_id\n" +
-                    ")AS pr ON p.product_id = pr.product_id\n" +
-                    "GROUP BY p.name, YEAR(o.order_date), MONTH(o.order_date)";
+                    "INNER JOIN (SELECT price_id, note, price, price_date_time, product_id \n" +
+                    "FROM ( SELECT *, ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY price_date_time DESC) AS rn \n" +
+                    "FROM product_price ) AS subquery WHERE rn = 1 ) AS pr ON p.product_id = pr.product_id";
 
             Query query = entityManager.createNativeQuery(queryString);
             List<Object[]> results = query.getResultList();

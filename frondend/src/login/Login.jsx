@@ -17,7 +17,9 @@ const Login = () => {
         })
         if(datas.data.role === "user"){
             let dataGetCust = await axios.get(`http://localhost:8080/api/customers/CustomerByEmail/${email}`)
-            navigate("/home", {state : {...dataGetCust.data, password : password, accountId : datas.data.accountId}})
+            navigate("/home", {state : {customer : {
+                ...dataGetCust.data, password : password, accountId : datas.data.accountId
+            }}})
         }
         else if(datas.data.role === "admin"){
             navigate("/dashboard")

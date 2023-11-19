@@ -74,7 +74,6 @@ const Cart = () => {
         <button className="btn-payment" onClick={() => navigate("/payment", {
             state: {
                 productsChosen: productsChosen,
-                // total: total,
                 customer : customer
               }
         })}>Thanh Toán</button>

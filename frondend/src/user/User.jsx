@@ -31,26 +31,27 @@ const User = () => {
   let location = useLocation();
 
   useEffect(() => {
-    setPassword(location.state.password);
-    setAccountId(location.state.accountId);
+    setPassword(location.state.customer.password);
+    setAccountId(location.state.customer.accountId);
   }, [JSON.stringify(user)]);
 
   useEffect(() => {
     let getApiCustomer = async () => {
       let datas = await axios.get(
-        `http://localhost:8080/api/customers/${location.state.custId}`
+        `http://localhost:8080/api/accounts/${location.state.customer.accountId}`
       );
-      setUser(datas.data);
-      setId(datas.data.custId);
-      setName(datas.data.custName);
-      setEmail(datas.data.email);
-      setPhone(datas.data.phone);
-      setAddress(datas.data.address);
-      setPassword(location.state.password);
-      setAccountId(location.state.accountId);
+      setUser(datas.data.customer);
+      setId(datas.data.customer.custId);
+      setName(datas.data.customer.custName);
+      setEmail(datas.data.customer.email);
+      setPhone(datas.data.customer.phone);
+      setAddress(datas.data.customer.address);
+      setPassword(datas.data.password);
+      setAccountId(datas.data.accountId);
     };
     getApiCustomer();
   }, [isUpdate]);
+
 
   let handleCLickUpdateUser = async () => {
     await axios.put(`http://localhost:8080/api/customers/${id}`, {
@@ -62,7 +63,7 @@ const User = () => {
     });
 
     let datas = await axios.get(
-      `http://localhost:8080/api/customers/${location.state.custId}`
+      `http://localhost:8080/api/customers/${location.state.customer.custId}`
     );
 
     await axios.put(`http://localhost:8080/api/accounts/${accountId}`, {

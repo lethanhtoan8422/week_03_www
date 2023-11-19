@@ -5,6 +5,7 @@ import vn.edu.iuh.fit.models.Account;
 import vn.edu.iuh.fit.repositories.AccountRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AccountService {
     private final AccountRepository accountRepository;
@@ -45,9 +46,10 @@ public class AccountService {
         return accountRepository.login(login);
     }
 
-    public List<Account> getAccountByEmail(String email) {
-        return accountRepository.getAccountByEmail(email);
+    public List<Account> getAccountsByEmail(String email) {
+        return accountRepository.getAccountsByEmail(email);
     }
+
     public long getQuantityAccount() {
         return accountRepository.getQuantityAccount();
     }

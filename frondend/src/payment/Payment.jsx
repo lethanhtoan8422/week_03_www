@@ -86,7 +86,7 @@ const Payment = () => {
       }
       if(isPaymentSuccess){
         alert("Mua Thành Công!!!")
-        navigate("/home")
+        navigate("/home", {state : {customer : location.state.customer}});
       }
     }
   };
