@@ -29,3 +29,9 @@
 ![Ảnh14](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/91bffbe3-1669-4adf-b029-599160329002) \
 ![Ảnh15](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/251dfaa6-894b-4114-86e4-9a16604b6df5) \
 ![Ảnh16](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/d38f3544-02eb-4296-bfff-d4e250812580) \
+4/ Thống kê order theo ngày, theo khoảng thời gian :\
+![Ảnh2](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/b3b7914d-c57e-41d0-8479-2837f597fcf0)\
+5/ Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian :\
+![Ảnh1](https://github.com/lethanhtoan8422/week_03_www/assets/144576370/e6ecec61-be37-400b-a342-8b0c7035be55)\
+
+
