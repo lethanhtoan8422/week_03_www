@@ -15,6 +15,7 @@
     
     .content-cart{
         width: 30%;
+        height: 200px;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -25,7 +26,8 @@
         border-radius: 10px;
 
         .image-product-chosen{
-            width: 50%;
+            width: 180px;
+            height: 200px;
         }
 
         .infor{
